@@ -1,6 +1,6 @@
 
 # SGR-tools
-This is a package for generating and recuding for stochastic programming problems.
+This is a package for generating and reduction for stochastic programming problems.
 
 Currently, it features scenario generation via seasonal block bootstrap and scenario reduction via K-Medoids clustering, adjusted for multi-stage stochastic programming problems.
 
