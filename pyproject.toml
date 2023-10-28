@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "sgr-tools"
+version = "0.1.0"
+description = ""
+authors = ["Amos Schledorn"]
+readme = "README.md"
+packages = [{include = "sgr_tools"}]
+
+[tool.poetry.dependencies]
+python = "^3.9 || ^3.10"
+scikit-learn-extra = "^0.3.0"
+numpy = "^1.24.3"
+pandas = "^2.0.1"
+pytest = "^7.3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
