@@ -23,6 +23,11 @@ cd sgr-tools
 git pull
 ```
 
+## Citation
+Please consider citing this work as:
+```Amos Schledor.n (2023). SGR-Tools v0.1 (0.1). Zenodo. https://doi.org/10.5281/zenodo.10050099```
+
+
 ## Licence
 Copyright ©2023 Technical University of Denmark.
 
