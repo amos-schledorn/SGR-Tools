@@ -13,7 +13,7 @@ git clone https://github.com/amosschle/sgr-tools.git
 ```
 #### Install the editable package using pip:
 ```
-pip install -e stochastic-programming-tools
+pip install -e sgr-tools
 ```
 
 ### Updates
