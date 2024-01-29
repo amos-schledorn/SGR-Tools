@@ -11,7 +11,7 @@ python = "^3.9 || ^3.10"
 scikit-learn-extra = "^0.3.0"
 numpy = "^1.24.3"
 pandas = "^2.0.1"
-pytest = "^7.3.1"
+pytest = ">7.3"
 
 
 [build-system]
