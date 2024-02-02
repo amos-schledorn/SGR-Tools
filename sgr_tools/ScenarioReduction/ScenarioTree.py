@@ -260,7 +260,7 @@ class ScenarioTree:
         """
 
         # K-Medoids
-        clustering = KMedoids(metric="euclidean", n_clusters=n_scenarios, random_state=self._seed, method='pam', max_iter=0).fit(data)
+        clustering = KMedoids(metric="euclidean", n_clusters=n_scenarios, random_state=self._seed, method='pam').fit(data)
         # Scenario probability is ratio of scenario points in cluster
         clustering.probs = (
             np.array(
