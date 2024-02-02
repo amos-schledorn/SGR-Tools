@@ -2,6 +2,7 @@ import numpy as np
 from typing import Any, List
 from sklearn_extra.cluster import KMedoids
 import logging
+import warnings
 from . import NonAnticipativitySets
 
 logger = logging.getLogger(__name__)
@@ -242,7 +243,10 @@ class ScenarioTree:
     def _reduce_to_one_scenario(self) -> None:
         """Reduce scenario tree to one scenario."""
         logging.debug("Reducing %s into to one scenario...", self)
-        clustering = self._cluster_scenarios(data=self._data, n_scenarios=1)
+
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message="n_clusters should be larger than 2 if max_iter != 0 setting max_iter to 0.")
+            clustering = self._cluster_scenarios(data=self._data, n_scenarios=1)
         self._data = clustering.cluster_centers_
         logging.debug("Update tree data to array of shape %s", self._data.shape)
         self.is_reduced = True
