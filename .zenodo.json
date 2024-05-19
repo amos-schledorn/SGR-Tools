@@ -1,0 +1,17 @@
+{
+    "creators": [
+        {
+            "orcid": "0000-0001-9517-2312",
+            "affiliation": "Technical University of Denmark",
+            "name": "Schledorn, Amos"
+        }
+        ],
+
+    "license": "BSD 3-Clause",
+
+    "title": "SGR-Tools",
+
+    "keywords": ["Stochastic Programming", "Scenario Generation", "Scenario Reduction", "Energy Systems"],
+
+    "grants": [{"id":" PtX, Sector Coupling and LCA project (Danish MissionGreenFuels)"}]
+}
