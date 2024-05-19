@@ -25,12 +25,16 @@ git pull
 
 ## Citation
 Please consider citing this work as:
-```Amos Schledorn. (2023). SGR-Tools v0.1 (0.1). Zenodo. https://doi.org/10.5281/zenodo.10050099```
+```Amos Schledorn. (2024). SGR-Tools v0.2 (0.2). Zenodo. https://doi.org/10.5281/zenodo.11216228```
 
 
 ## Licence
-Copyright ©2023 Technical University of Denmark.
+Copyright ©2024 Technical University of Denmark.
 
 This version of the software was developed by Amos Schledorn, postdoctoral researcher at DTU Compute.
 
 Licensed under the [BSD 3-Clause Licence](https://github.com/amosschle/stochastic-programming-tools/blob/main/LICENSE).
+
+## Acknowledgments
+Part of this work was supported by the project PtX, Sector Coupling and LCA, which is part
+of the Danish MissionGreenFuels portfolio of projects.
