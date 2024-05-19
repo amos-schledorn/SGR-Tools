@@ -168,7 +168,7 @@ class ARX:
         """
 
         max_lag = np.max(lags)
-        all_lags = np.lib.stride_tricks.sliding_window_view(y0, (max_lag,))
+        all_lags = np.lib.stride_tricks.sliding_window_view(np.array(y0).flatten(), (max_lag,))
         ret_val = all_lags[-1, -np.array(lags)]
         if intercept:
             ret_val = np.concatenate(
