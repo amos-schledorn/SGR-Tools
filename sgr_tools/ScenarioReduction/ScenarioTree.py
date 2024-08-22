@@ -16,6 +16,8 @@ class ScenarioTree:
         split_idx (np.ndarray): Array of time steps at which to split the data. Must be strictly increasing and contain 0.
         split_branches (np.ndarray): Array of number of branches to split into at each time step specified in split_idx. Must have same length as split_idx.
         base_idx: Index of first time step in data. Used to keep track of time steps when splitting recursively. Defaults to 0. 
+        kmedoids_method (str): Method to solve K-Medoids clustering. Must be either "alternate" or "pam. Defaults to "alternate".
+        seed (int): Seed for random number generator. Defaults to 1494.
     
     Attributes:
         S (int): Number of scenarios.
@@ -37,6 +39,7 @@ class ScenarioTree:
         split_idx: np.ndarray,  # array-like
         split_branches: np.ndarray,  # array-like
         base_idx: int=0,
+        kmedoids_method: str="alternate",
         seed: int= 1494):
 
         # np.random.seed(seed)
@@ -49,6 +52,7 @@ class ScenarioTree:
 
         self.split_idx = np.array(split_idx)
         self.split_branches = np.array(split_branches)
+        self.kmedoids_method = kmedoids_method
         self.base_idx = base_idx
 
 
@@ -135,7 +139,7 @@ class ScenarioTree:
             logging.warning("n_branches=%s > data size=%s, setting n_branches=%s", n_branches, self.S, self.S)
             n_branches = self.S
 
-        clustering = self._cluster_scenarios(data=self._data, n_scenarios=n_branches)
+        clustering = self._cluster_scenarios(data=self._data, n_scenarios=n_branches, kmedoids_method=self.kmedoids_method)
         # add children
         self._add_children(
             [
@@ -251,16 +255,19 @@ class ScenarioTree:
         logging.debug("Update tree data to array of shape %s", self._data.shape)
         self.is_reduced = True
 
-    def _cluster_scenarios(self, data: np.ndarray, n_scenarios: int) -> np.ndarray:
+    def _cluster_scenarios(self, data: np.ndarray, n_scenarios: int, kmedoids_method: str="alternate") -> np.ndarray:
         """Reduce scenarios to medoids of K-Medoids clustering.
 
         Args:
             data (np.ndarray): Data to cluster.
             n_scenarios (int): Number of scenarios to cluster to. 
+            kmedoids_method (str): Method to solve K-Medoids clustering. Must be either "alternate" or "pam. Defaults to "alternate".
         """
 
+        if kmedoids_method not in ["alternate", "pam"]:
+            raise ValueError("kmedoids_method must be either 'alternate' or 'pam'")
         # K-Medoids
-        clustering = KMedoids(metric="euclidean", n_clusters=n_scenarios, random_state=self._seed, method='pam').fit(data)
+        clustering = KMedoids(metric="euclidean", n_clusters=n_scenarios, random_state=self._seed, method=kmedoids_method).fit(data)
         # Scenario probability is ratio of scenario points in cluster
         clustering.probs = (
             np.array(
