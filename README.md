@@ -1,12 +1,12 @@
 
 # SGR-tools
-This is a package for generating and reduction for stochastic programming problems.
+This is a package for scenario generation and reduction for stochastic programming problems.
 
-Currently, it features scenario generation via seasonal block bootstrap and scenario reduction via K-Medoids clustering, adjusted for multi-stage stochastic programming problems.
+Currently, it features parametric scenario generation via seasonal ARX models and non-parametric scenario generation via seasonal block bootstrap. It also includes scenario reduction via K-Medoids clustering, adjusted for multi-stage stochastic programming problems.
 
 ## Installation
 ### Recommended
-We recommend installing the package as editable This way, you can make changes to the code and use the package without having to reinstall it. This is especially encouraged, since the package might not be actively maintained.
+We recommend installing the package as an editable package. This way, you can make changes to the code and use the package without having to reinstall it. This is especially encouraged, since the package might not be actively maintained.
 #### Clone this repository
 ```
 git clone https://github.com/amosschle/sgr-tools.git
